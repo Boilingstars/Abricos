@@ -3,8 +3,9 @@ from django.db import models
 class GoodsMarketAnalysis(models.Model):
 
     class Meta:
-        app_label = 'GoodsMarketAnalysis'
+        app_label = 'Analytics'
 
+    product = models.CharField(max_length=100, default=None)
     market_volume = models.IntegerField()
     found_enemies = models.IntegerField()
     market_concentration = models.FloatField()
@@ -22,8 +23,9 @@ class GoodsMarketAnalysis(models.Model):
 class BuisnessMarketAnalysis(models.Model):
     
     class Meta:
-        app_label = 'BuisnessMarketAnalysis'
+        app_label = 'Analytics'
 
+    project = models.CharField(max_length=100, default=None)
     market_volume = models.IntegerField()
     found_enemies = models.IntegerField()
     market_concentration = models.FloatField()
@@ -36,12 +38,3 @@ class BuisnessMarketAnalysis(models.Model):
 
     def __str__(self):
         return f"Buisness Market Analysis {self.id}"
-
-class Enemies(models.Model):
-    license_key = models.CharField(max_length=40)
-
-    class Meta:
-        app_label = 'Users'
-
-    def __str__(self):
-        return self.username
