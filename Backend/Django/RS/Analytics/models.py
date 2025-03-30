@@ -5,7 +5,6 @@ class GoodsMarketAnalysis(models.Model):
     class Meta:
         app_label = 'Analytics'
 
-    product = models.CharField(max_length=100, default=None)
     market_volume = models.IntegerField()
     found_enemies = models.IntegerField()
     market_concentration = models.FloatField()
@@ -25,7 +24,6 @@ class BuisnessMarketAnalysis(models.Model):
     class Meta:
         app_label = 'Analytics'
 
-    project = models.CharField(max_length=100, default=None)
     market_volume = models.IntegerField()
     found_enemies = models.IntegerField()
     market_concentration = models.FloatField()
@@ -38,3 +36,5 @@ class BuisnessMarketAnalysis(models.Model):
 
     def __str__(self):
         return f"Buisness Market Analysis {self.id}"
+
+new_analytics = BuisnessMarketAnalysis(market_volume=800, found_enemies=23, market_concentration=20, market_potential=1, available_market=1.4, demand_growth=0.5, purchasing_power=90, customer_preferences=8090, market_penetration_rate=2)

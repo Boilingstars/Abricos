@@ -1,3 +1,8 @@
 from django.shortcuts import render
+from rest_framework import generics
+from Analytics.models import BuisnessMarketAnalysis
+from Analytics.serializer import BuisnessMarketAnalysisSerializer
 
-# Create your views here.
+class BuisnessMarketAnalysisList(generics.ListAPIView):
+    queryset = BuisnessMarketAnalysis.objects.all()
+    serializer_class = BuisnessMarketAnalysisSerializer
