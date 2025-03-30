@@ -25,7 +25,9 @@ SECRET_KEY = 'django-insecure-iy0@xfnk&1qy41y(!6=+nc^#kkk#kjdnh+lq3juoimu=o^$l6m
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    '192.168.121.83'
+]
 
 
 # Application definition
@@ -38,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
+    'corsheaders',
     'Main.apps.MainConfig',
     'Users.apps.UsersConfig',
     'Analytics.apps.AnalyticsConfig',
@@ -46,6 +49,7 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -53,6 +57,11 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+]
+
+CORS_ALLOWED_ORIGINS = [
+    "http://192.168.121.26:8080",  # URL вашего фронтенда
+    "http://192.168.121.83:8000",  # URL вашего бэкенда
 ]
 
 ROOT_URLCONF = 'RS.urls'

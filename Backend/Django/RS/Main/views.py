@@ -1,7 +1,13 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
-from django.shortcuts import redirect
 from django.contrib.auth import logout
+from rest_framework import generics
+from Main.models import Projects
+from Main.serializer import ProjectsSerializer
+
+class ProjectList(generics.ListAPIView):
+    queryset = Projects.objects.all()
+    serializer_class = ProjectsSerializer
 
 @login_required
 def logout_view(request):
@@ -21,7 +27,8 @@ def index(request):
 
 @login_required
 def projects(request):
-    data = {} # Словарь data передаем функцией render()
+    if request.method == 'GET':
+        data = {} # Словарь data передаем функцией render()
     return render(request, 'index.html')
 
 @login_required
