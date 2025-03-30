@@ -25,7 +25,9 @@ SECRET_KEY = 'django-insecure-0y*d3*q32%)p-=h+m=hl7mo$cjrvhxzjvqsaqyr$8dab&w4rh0
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    '192.168.20.83'
+]
 
 
 # Application definition
@@ -37,9 +39,13 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'rest_framework',
+    'corsheaders',
+    'Main.apps.MainConfig',
 ]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -47,6 +53,12 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+]
+
+CORS_ALLOWED_ORIGINS = [
+    "http://192.168.121.26:8080",  # URL вашего фронтенда
+    "http://192.168.121.83:8000",
+    "http://192.168.20.83:8000",
 ]
 
 ROOT_URLCONF = 'AIserver.urls'

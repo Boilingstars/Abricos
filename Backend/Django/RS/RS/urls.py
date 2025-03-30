@@ -23,4 +23,5 @@ urlpatterns = [
     path('', include('Users.urls')),
     path('', include('Analytics.urls')),
     path('', include('Tables.urls')),
+    path('', include('CollectingData.urls')),
 ]
